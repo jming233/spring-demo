@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.github.pagehelper.PageHelper;
 import com.ibm.springboot.bean.Employee;
-
-
+import com.ibm.springboot.mapper.EmployeeMapper;
 import com.ibm.springboot.service.EmployeeService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +35,7 @@ public class EmpController {
 	
 	@Autowired
 	private EmployeeService employeeService;
-		
+	private EmployeeMapper employeeMapper;	
 	/**
 	 * 新增员工
 	 * @param employee
@@ -91,4 +94,16 @@ public class EmpController {
 		return employeeService.findAll();
 	}
 	
+	/**
+	 * 查询所有员工2
+	 * @param all
+	 * @return
+	 */
+	 @GetMapping(value="/emplist")
+	    public List<Employee> queryList(Model m,@RequestParam(value = "start", defaultValue = "0")int start,@RequestParam(value = "size", defaultValue = "5") int size) throws Exception {
+		 
+	    	        PageHelper.startPage(start,size);     	    	
+	    	        return employeeService.queryList();
+	    	
+	    	    }
 }

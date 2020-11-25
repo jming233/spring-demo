@@ -32,4 +32,12 @@ public class EmployeeService {
 	    public   List<Employee> findAll(){
 	    	return employeeMapper.findAll();
 	    }
+	    
+	    public List<Employee> queryList(){
+			
+	        List<Employee> empList=employeeMapper.queryList();
+	
+	        return empList;
+	
+	    }
 	}

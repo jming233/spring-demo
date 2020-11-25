@@ -36,6 +36,10 @@ public interface EmployeeMapper {
     @Select("select id,name,salary,age from t_emp")
       public   List<Employee> findAll();
  
-    	
+    @Select("select * from t_emp ")
+	 public List<Employee> queryList();	
+    
+    @Select("select id,name,salary,age from t_emp limit #{currentPage},5")
+    public   List<Employee> getempByPage(Integer currentPage);	
     }
   
