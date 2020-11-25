@@ -6,7 +6,6 @@ public class Employee {
 	private String name;
 	private double salary;
 	private int  age;
-	
 	public int getId() {
 		return id;
 	}

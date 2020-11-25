@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ibm.springboot.bean.Employee;
+import com.ibm.springboot.bean.EmployeeId;
 import com.ibm.springboot.mapper.EmployeeMapper;
 @Transactional
 @Service
@@ -40,4 +41,9 @@ public class EmployeeService {
 	        return empList;
 	
 	    }
+
+		public List<EmployeeId> MaxID() {
+			// TODO Auto-generated method stub
+			return employeeMapper.MaxID();
+		}
 	}

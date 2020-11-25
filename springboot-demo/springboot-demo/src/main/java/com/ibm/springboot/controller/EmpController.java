@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.PageHelper;
 import com.ibm.springboot.bean.Employee;
+import com.ibm.springboot.bean.EmployeeId;
 import com.ibm.springboot.mapper.EmployeeMapper;
 import com.ibm.springboot.service.EmployeeService;
 
@@ -103,7 +104,12 @@ public class EmpController {
 	    public List<Employee> queryList(Model m,@RequestParam(value = "start", defaultValue = "0")int start,@RequestParam(value = "size", defaultValue = "5") int size) throws Exception {
 		 
 	    	        PageHelper.startPage(start,size);     	    	
-	    	        return employeeService.queryList();
-	    	
+	    	        return employeeService.queryList();	    	
 	    	    }
+	 
+	 @GetMapping("/Max")
+		public List<EmployeeId> MaxID(){
+			return employeeService.MaxID();
+		}
+		
 }

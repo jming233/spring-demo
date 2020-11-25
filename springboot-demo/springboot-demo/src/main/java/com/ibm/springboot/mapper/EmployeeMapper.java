@@ -11,6 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.ibm.springboot.bean.Employee;
+import com.ibm.springboot.bean.EmployeeId;
 
 
 
@@ -40,6 +41,10 @@ public interface EmployeeMapper {
 	 public List<Employee> queryList();	
     
     @Select("select id,name,salary,age from t_emp limit #{currentPage},5")
-    public   List<Employee> getempByPage(Integer currentPage);	
+    public   List<Employee> getempByPage(Integer currentPage);
+
+    @Select("select MAX(ID) max from t_emp ")
+    public List<EmployeeId> MaxID();	
     }
+
   
